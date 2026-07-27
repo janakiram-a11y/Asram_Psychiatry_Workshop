@@ -17,14 +17,15 @@ export default function Patrons() {
           <PatronPanel
             title="Chief Patrons"
             icon={<UsersIcon width={28} height={28} className="text-[#223f7f] shrink-0" />}
-            gridClassName="grid-cols-2 sm:grid-cols-4"
+            itemWidthClassName="w-[calc(50%-12px)] sm:w-[calc(25%-18px)]"
             people={patrons.chiefPatrons}
           />
           <PatronPanel
             title="Guests of Honour"
             icon={<StarIcon width={28} height={28} className="text-[#223f7f] shrink-0" />}
-            gridClassName="grid-cols-2 sm:grid-cols-3"
+            itemWidthClassName="w-full lg:w-[calc(50%-12px)] xl:w-[calc(25%-18px)]"
             people={patrons.guestsOfHonour}
+            compactNames
           />
         </div>
       </div>
