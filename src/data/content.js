@@ -123,6 +123,7 @@ export const speakers = {
       name: 'Dr Ranjit Kumar',
       position: 'Professor & HOD',
       institution: 'Dept of Psychiatry',
+      photo: '/assets/speakers/ranjit-kumar.jpg',
       achievements: ['Session: Introduction'],
     },
     {
@@ -240,15 +241,10 @@ export const speakers = {
       achievements: ['Session: Quiz'],
     },
     {
-      name: 'Dr Dhatri',
-      position: 'Senior Resident',
-      institution: 'ASRAMS',
-      achievements: ['Session: Quiz'],
-    },
-    {
       name: 'Dr. M. Manasa',
       position: 'Assistant Professor',
       institution: 'ASRAMS',
+      photo: '/assets/speakers/manasa.jpg',
       achievements: ['Session: Valedictory Function'],
     },
   ],

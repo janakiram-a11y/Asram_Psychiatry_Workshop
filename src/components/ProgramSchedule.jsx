@@ -26,12 +26,14 @@ const BANNER_ICONS = {
   drumstick: DrumstickIcon,
 }
 
-function BannerRow({ label, variant = 'amber', icon }) {
+function BannerRow({ label, variant = 'amber', icon, standalone = false }) {
   const style = BANNER_STYLES[variant] || BANNER_STYLES.amber
   const Icon = BANNER_ICONS[icon]
   return (
     <div
-      className="bg-white border-t border-[#d9e2ec] flex items-center justify-center gap-2 px-[18px] py-3"
+      className={`bg-white flex items-center justify-center gap-2 px-[18px] py-3 ${
+        standalone ? 'rounded-[10px]' : 'border-t border-[#d9e2ec]'
+      }`}
       style={{ backgroundColor: style.bg }}
     >
       {Icon && <Icon style={{ color: style.text }} />}
@@ -42,6 +44,7 @@ function BannerRow({ label, variant = 'amber', icon }) {
   )
 }
 
+// Desktop/tablet table row (md and up).
 function ScheduleRow({ time, title, session, speaker, focus, showFocus }) {
   return (
     <div className="bg-white border-t border-[#d9e2ec] flex items-start">
@@ -64,26 +67,63 @@ function ScheduleRow({ time, title, session, speaker, focus, showFocus }) {
   )
 }
 
+// Mobile stacked card (below md) — same fields, no horizontal scrolling required.
+function ScheduleCard({ time, title, session, speaker, focus, showFocus }) {
+  return (
+    <div className="bg-white border border-[#d9e2ec] rounded-[10px] p-4 flex flex-col gap-2">
+      <span className="text-[13px] font-semibold text-[#2f9dc3]">{time}</span>
+      {title && <span className="text-[14px] font-semibold text-[#17324d] leading-snug">{title}</span>}
+      {session && <span className="text-[12px] text-[#6a7a8c]">{session}</span>}
+
+      <div className="pt-2 mt-1 border-t border-[#eef2f7] flex flex-col gap-0.5">
+        <span className="text-[10px] font-bold uppercase tracking-wide text-[#94a3b8]">Speaker / Faculty</span>
+        <span className="text-[13px] text-[#6a7a8c] whitespace-pre-line">{speaker}</span>
+      </div>
+
+      {showFocus && focus && (
+        <div className="pt-2 mt-1 border-t border-[#eef2f7] flex flex-col gap-0.5">
+          <span className="text-[10px] font-bold uppercase tracking-wide text-[#94a3b8]">Learning Objectives</span>
+          <span className="text-[13px] text-[#6a7a8c]">{focus}</span>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function ScheduleTable({ sessions }) {
   const showFocus = sessions.some((item) => item.type !== 'banner' && item.focus)
   return (
-    <div className="overflow-x-auto -mx-4 sm:mx-0">
-      <div className="bg-white border border-[#d9e2ec] rounded-[8px] overflow-hidden min-w-[640px] mx-4 sm:mx-0">
-        <div className="bg-[#f6f8fb] flex text-[13px] font-semibold text-[#17324d]">
-          <div className="w-[120px] px-[18px] py-4 shrink-0">Time</div>
-          <div className={`${showFocus ? 'flex-[2]' : 'flex-[2.2]'} px-[18px] py-4`}>Session Title</div>
-          <div className={`${showFocus ? 'flex-[1.2]' : 'flex-[1.5]'} px-[18px] py-4`}>Speaker / Faculty</div>
-          {showFocus && <div className="flex-[1.5] px-[18px] py-4">Learning Objectives</div>}
+    <>
+      {/* Tablet & desktop: full table */}
+      <div className="hidden md:block overflow-x-auto">
+        <div className="bg-white border border-[#d9e2ec] rounded-[8px] overflow-hidden min-w-[640px]">
+          <div className="bg-[#f6f8fb] flex text-[13px] font-semibold text-[#17324d]">
+            <div className="w-[120px] px-[18px] py-4 shrink-0">Time</div>
+            <div className={`${showFocus ? 'flex-[2]' : 'flex-[2.2]'} px-[18px] py-4`}>Session Title</div>
+            <div className={`${showFocus ? 'flex-[1.2]' : 'flex-[1.5]'} px-[18px] py-4`}>Speaker / Faculty</div>
+            {showFocus && <div className="flex-[1.5] px-[18px] py-4">Learning Objectives</div>}
+          </div>
+          {sessions.map((item, index) =>
+            item.type === 'banner' ? (
+              <BannerRow key={index} label={item.label} variant={item.variant} icon={item.icon} />
+            ) : (
+              <ScheduleRow key={index} {...item} showFocus={showFocus} />
+            )
+          )}
         </div>
+      </div>
+
+      {/* Mobile: stacked cards, no horizontal scrolling */}
+      <div className="flex flex-col gap-3 md:hidden">
         {sessions.map((item, index) =>
           item.type === 'banner' ? (
-            <BannerRow key={index} label={item.label} variant={item.variant} icon={item.icon} />
+            <BannerRow key={index} label={item.label} variant={item.variant} icon={item.icon} standalone />
           ) : (
-            <ScheduleRow key={index} {...item} showFocus={showFocus} />
+            <ScheduleCard key={index} {...item} showFocus={showFocus} />
           )
         )}
       </div>
-    </div>
+    </>
   )
 }
 

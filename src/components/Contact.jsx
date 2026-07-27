@@ -58,7 +58,7 @@ export default function Contact() {
               href={contact.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex mt-3 text-[#223f7f] text-[13px] md:text-[14px] font-semibold hover:underline"
+              className="inline-flex items-center mt-3 py-2 text-[#223f7f] text-[13px] md:text-[14px] font-semibold hover:underline"
             >
               Open in Google Maps
             </a>
