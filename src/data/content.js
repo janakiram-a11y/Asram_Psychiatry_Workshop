@@ -121,6 +121,7 @@ export const speakers = {
   list: [
     {
       name: 'Dr Ranjit Kumar',
+      credentials: 'MBBS, MD Psychiatry',
       position: 'Professor & HOD',
       institution: 'Dept of Psychiatry',
       photo: '/assets/speakers/ranjit-kumar.jpg',
@@ -242,6 +243,7 @@ export const speakers = {
     },
     {
       name: 'Dr. M. Manasa',
+      credentials: 'MBBS, MD Psychiatry',
       position: 'Assistant Professor',
       institution: 'ASRAMS',
       photo: '/assets/speakers/manasa.jpg',
@@ -265,8 +267,8 @@ export const patrons = {
     { name: 'Dr. K. Santhaiah', role: 'Superintendent, ASRAM', photo: '/assets/guests/santhaiah.png' },
     { name: 'Dr. V. Siva Prabodh', role: 'Dean - (Admin.), ASRAM', photo: '/assets/guests/siva-prabodh.png' },
     { name: 'Dr. Venu Gopala Raju.S', role: 'Dean - (Academic) ASRAM', photo: '/assets/guests/venu-gopala-raju.png' },
-    { name: 'Dr. G. V. Ramana Rao', role: 'Consultant Psychiatrist, Shanthi Hospitals, Bheemavaram', photo: '/assets/guests/ramana-rao.jpg' },
     { name: 'Dr. Indla Rama Subba Reddy', role: 'Emeritus Professor of Psychiatry, ASRAMS', photo: '/assets/guests/indla-rama-subba-reddy.jpg' },
+    { name: 'Dr. G. V. Ramana Rao', role: 'Consultant Psychiatrist, Shanthi Hospitals, Bheemavaram', photo: '/assets/guests/ramana-rao.jpg' },
   ],
 }
 
