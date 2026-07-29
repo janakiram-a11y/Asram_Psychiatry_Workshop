@@ -214,10 +214,6 @@ export default function Registration() {
               value={designationKey}
               onChange={setDesignationKey}
             />
-            {designationKey === 'other' && (
-              <Field label="Please specify" type="text" placeholder="Your designation" />
-            )}
-
             <Field label="Department" type="text" placeholder="Your department" />
 
             <RadioPills

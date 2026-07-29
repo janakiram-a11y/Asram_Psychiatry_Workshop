@@ -281,6 +281,8 @@ export const registration = {
   panelTitle: 'Secure Your Spot',
   panelDescription: 'Fill in your details to register for the Psychiatry Zonal PG CME – Zone 2.',
   benefits: [
+    'Student Registration Fee – ₹100',
+    'Faculty Registration Fee – ₹300',
     'Full Access to All Sessions',
     '2 APMC Credit Hours',
     'Tea & Lunch Included',
@@ -291,7 +293,6 @@ export const registration = {
     { key: 'pg2', label: 'Second Year Post Graduate', fee: 100 },
     { key: 'pg3', label: 'Third Year Post Graduate', fee: 100 },
     { key: 'faculty', label: 'Faculty', fee: 300 },
-    { key: 'other', label: 'Other', fee: null },
   ],
   mealPreferences: [
     { key: 'veg', label: 'Vegetarian' },
